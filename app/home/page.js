@@ -69,7 +69,7 @@ export default function page() {
      <main className="py-10">
       <div className="max-w-7xl mx-auto px-4">
         <h1 className="text-center text-3xl sm:text-4xl font-extrabold text-blue-700 mb-8">
-          📚 National Library, Bandra Digital Knowledge Centre (NLBDKC)
+          📚 Public Library Maharashtra Digital Knowledge Centre (PLMDKC)
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
