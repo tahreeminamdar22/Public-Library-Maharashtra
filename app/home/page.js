@@ -31,7 +31,7 @@ export default function page() {
       icon: "fas fa-newspaper",
       color: "text-green-600",
       desc: "UPSC | SSC | Defence | State PSCs",
-      link: "https://nlbdkc.noeticindia.com/current-affairs",
+      link: "./CurrentAffairs",
        aos: "fade-left",
     },
     {

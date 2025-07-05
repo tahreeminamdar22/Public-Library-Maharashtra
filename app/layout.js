@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 // ✅ Metadata
 export const metadata = {
-  title: "NLBDKC",
+  title: "PLMDKC",
   description: "Library App",
 };
 

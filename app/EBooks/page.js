@@ -15,75 +15,83 @@ export default function Page() {
     { title: "Year of Publication", options: ["2025", "2024", "2023", "2010", "2007"] },
     { title: "Mediums / Languages", options: ["Marathi", "Hindi", "English", "Urdu"] },
     { title: "Subjects", options: ["Math", "Science", "Civics", "Languages"] },
-    { title: "Publisher", options: ["Balbharati", "Other Publishers"] },
+    { title: "Publisher", options: ["Balbharati", "NLB", "NCERT", "NIOS", "Other Publishers"] },
     { title: "Authors", options: ["Author A", "Author B", "Author C"] },
     { title: "ISSN / ISBN", options: ["123-4567890123", "987-6543210987"] },
-    {title: "Content Types:", options: ["open access", "premium" ]},
-    {title: "Content:", options: ["ebooks", "videos", "articles" ]},
-    {title: "Publishers:", options: ["NLB", "NCERT", "NIOS", "Others"]},
-
-
+    { title: "Content Types:", options: ["open access", "premium"] },
+    { title: "Content:", options: ["ebooks", "videos", "articles"] },
   ];
 
   const allResources = [
     {
+      title: "English Balbharti",
+      image: "/assets/img/english-balbharti.jpg",
+      file: "/books/English-Balbharti.pdf",
+      author: "Dr Sunil Magar",
+      category: "Ebooks",
+      edition: "1st Edition",
+      publisher: "Vivek Uttam Gosavi",
+      desc: "Textbook for students of English medium",
+      aos: "fade-up",
+    },
+    {
       title: "Solar Cells",
       image: "/assets/img/solar.jpg",
+      file: "/books/solar-cells.pdf",
       author: "Leonid A. Kosyachenko",
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Solar cells dye-sensitized devices",
-      link: "./EBooks",
       aos: "fade-up",
     },
     {
       title: "Power Quality",
       image: "/assets/img/power-quality.jpg",
+      file: "/books/power-quality.pdf",
       author: "Ahmad Zobaa, Mario Manana Centali & Ramesh Bhansal",
       category: "Ebooks",
-      edition: "2st Edition",
+      edition: "2nd Edition",
       desc: "Power Quality Monitoring, Analysis & Enhancement",
-      link: "https://nlbdkc.noeticindia.com/mocktests",
       aos: "fade-up",
     },
     {
       title: "Advances In Biotechnology",
       image: "/assets/img/biotech.jpg",
+      file: "/books/biotech.pdf",
       author: "Marian Petre",
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Advances In Applied Biotechnology",
-      link: "https://nlbdkc.noeticindia.com/current-affairs",
       aos: "fade-up",
     },
     {
       title: "Biodiversity",
       image: "/assets/img/biodiversity.jpg",
+      file: "/books/biodiversity.pdf",
       author: "Adriano Sofo",
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Career Awareness & Future Readiness",
-      link: "https://nlbdkc.noeticindia.com/digitalLibrary/showCategory/129",
       aos: "fade-up",
     },
     {
       title: "Biochemistry",
       image: "/assets/img/biochem.jpg",
+      file: "/books/biochemistry.pdf",
       author: "Deniz Ekinci",
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Life forms from genes to ecosystems",
-      link: "https://nlbdkc.noeticindia.com/digitalLibrary/showCategory/129",
       aos: "fade-up",
     },
     {
       title: "Advances In Protein Kinases",
       image: "/assets/img/protein.jpg",
+      file: "/books/protein-kinases.pdf",
       author: "Gabriela da Silva Xavier",
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Enzymes regulating cellular functions",
-      link: "https://nlbdkc.noeticindia.com/digitalLibrary/showCategory/129",
       aos: "fade-up",
     },
   ];
@@ -92,13 +100,12 @@ export default function Page() {
 
   const applyFilters = (selected) => {
     console.log("Selected Filters:", selected);
-    setFilteredResources(allResources); // Replace with real filtering logic
+    setFilteredResources(allResources); // Add real filtering logic here
   };
 
   return (
     <>
       <Header />
-
       <main className="bg-gray-50 py-8 md:py-12">
         <div className="max-w-[1440px] mx-auto px-4 flex flex-col md:flex-row gap-6">
           {/* Sidebar */}
@@ -137,14 +144,15 @@ export default function Page() {
                     <p className="text-sm text-gray-600 mt-1">{item.category}</p>
                     <p className="text-sm text-gray-600 mt-1">{item.edition}</p>
                     <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
-                    <a
-                      href={item.link}
-                      target="_self"
-                      rel="noopener noreferrer"
-                      className="inline-block text-sm text-blue-600 mt-2 hover:underline"
-                    >
-                      View →
-                    </a>
+                    
+                  <a
+  href={`${item.file}#toolbar=0&navpanes=0&scrollbar=0`}
+  target="_self"
+  rel="noopener noreferrer"
+  className="inline-block text-sm text-blue-600 mt-2 hover:underline"
+>
+  View →
+</a>
                   </div>
                 </div>
               ))}
@@ -152,7 +160,6 @@ export default function Page() {
           </div>
         </div>
       </main>
-
       <Footer />
     </>
   );
