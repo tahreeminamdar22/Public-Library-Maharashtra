@@ -5,10 +5,15 @@ import "aos/dist/aos.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import FilterSidebar from "../Components/FilterSidebar";
-
+import BookIframe from "../Components/BookIframe";
 export default function Page() {
   useEffect(() => {
-    AOS.init({ once: true, duration: 800, easing: "ease-in-out" });
+    AOS.init({
+      once: false,
+      duration: 500,
+      easing: "ease-in-out",
+      offset: 100,
+    });
   }, []);
 
   const filters = [
@@ -18,14 +23,14 @@ export default function Page() {
     { title: "Publisher", options: ["Balbharati", "NLB", "NCERT", "NIOS", "Other Publishers"] },
     { title: "Authors", options: ["Author A", "Author B", "Author C"] },
     { title: "ISSN / ISBN", options: ["123-4567890123", "987-6543210987"] },
-    { title: "Content Types:", options: ["open access", "premium"] },
-    { title: "Content:", options: ["ebooks", "videos", "articles"] },
+    { title: "Content Types", options: ["open access", "premium"] },
+    { title: "Content", options: ["ebooks", "videos", "articles"] },
   ];
 
   const allResources = [
     {
       title: "English Balbharti",
-      image: "/assets/img/english-balbharti.jpg",
+      image: "/assets/img/englishbalbharti.jpg",
       file: "/books/English-Balbharti.pdf",
       author: "Dr Sunil Magar",
       category: "Ebooks",
@@ -42,7 +47,7 @@ export default function Page() {
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Solar cells dye-sensitized devices",
-      aos: "fade-up",
+      aos: "zoom-in",
     },
     {
       title: "Power Quality",
@@ -52,7 +57,7 @@ export default function Page() {
       category: "Ebooks",
       edition: "2nd Edition",
       desc: "Power Quality Monitoring, Analysis & Enhancement",
-      aos: "fade-up",
+      aos: "slide-up",
     },
     {
       title: "Advances In Biotechnology",
@@ -62,7 +67,7 @@ export default function Page() {
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Advances In Applied Biotechnology",
-      aos: "fade-up",
+      aos: "flip-up",
     },
     {
       title: "Biodiversity",
@@ -72,7 +77,7 @@ export default function Page() {
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Career Awareness & Future Readiness",
-      aos: "fade-up",
+      aos: "fade-down",
     },
     {
       title: "Biochemistry",
@@ -82,7 +87,7 @@ export default function Page() {
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Life forms from genes to ecosystems",
-      aos: "fade-up",
+      aos: "zoom-out",
     },
     {
       title: "Advances In Protein Kinases",
@@ -92,7 +97,7 @@ export default function Page() {
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Enzymes regulating cellular functions",
-      aos: "fade-up",
+      aos: "slide-left",
     },
   ];
 
@@ -100,16 +105,15 @@ export default function Page() {
 
   const applyFilters = (selected) => {
     console.log("Selected Filters:", selected);
-    setFilteredResources(allResources); // Add real filtering logic here
+    setFilteredResources(allResources); // Replace with actual filtering
   };
 
   return (
     <>
       <Header />
-      <main className="bg-gray-50 py-8 md:py-12">
+      <main className="bg-gray-50 py-10">
         <div className="max-w-[1440px] mx-auto px-4 flex flex-col md:flex-row gap-6">
-          {/* Sidebar */}
-          <div className="w-full md:w-96 md:sticky md:top-24 h-fit z-10">
+          <div className="w-full md:w-96 md:sticky md:top-24 h-full z-10">
             <FilterSidebar
               filters={filters}
               onApply={applyFilters}
@@ -117,7 +121,6 @@ export default function Page() {
             />
           </div>
 
-          {/* Main Content */}
           <div className="flex-1">
             <h1 className="text-3xl md:text-4xl font-extrabold text-blue-700 mb-8">
               Public Library Maharashtra Digital Knowledge Centre (PLMDKC)
@@ -127,32 +130,34 @@ export default function Page() {
               {filteredResources.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col sm:flex-row gap-4"
+                  className="bg-white rounded-xl shadow-md hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 overflow-hidden flex flex-col h-[420px]"
                   data-aos={item.aos}
                   data-aos-delay={index * 100}
                 >
-                  <div className="min-w-[64px] min-h-[64px] max-w-[64px] max-h-[64px]">
+                  <div className="h-[60%] w-full">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-16 h-16 object-cover rounded-md"
+                      className="w-full h-full object-fit rounded-t-xl"
                     />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-md font-semibold text-gray-900">{item.title}</h3>
-                    <p className="text-sm text-gray-600 mt-1">{item.author}</p>
-                    <p className="text-sm text-gray-600 mt-1">{item.category}</p>
-                    <p className="text-sm text-gray-600 mt-1">{item.edition}</p>
-                    <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
-                    
-                  <a
-  href={`${item.file}#toolbar=0&navpanes=0&scrollbar=0`}
-  target="_self"
-  rel="noopener noreferrer"
-  className="inline-block text-sm text-blue-600 mt-2 hover:underline"
->
-  View →
-</a>
+
+                  <div className="h-[30%] px-4 py-3 flex flex-col justify-between">
+                    <h3 className="text-base font-bold text-gray-900 truncate">{item.title}</h3>
+                    <p className="text-sm text-gray-600 truncate">👤 {item.author}</p>
+                    <p className="text-sm text-gray-600 truncate">📘 {item.category} • 📝 {item.edition}</p>
+                    <p className="text-sm text-gray-600 line-clamp-2">{item.desc}</p>
+                  </div>
+
+                  <div className="h-[10%] w-full px-4 pb-4">
+                    <a
+                     href={`${item.file}#toolbar=0&navpanes=0&scrollbar=0`}
+                      target="_self"
+                      rel="noopener noreferrer"
+                      className="block w-full text-center text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-800 border border-indigo-800 rounded-md py-2 transition-all duration-300 hover:shadow-md hover:scale-[1.01]"
+                    >
+                      View →
+                    </a>
                   </div>
                 </div>
               ))}

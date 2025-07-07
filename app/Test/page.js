@@ -1,5 +1,8 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
@@ -8,47 +11,61 @@ const tests = [
     title: "CA CS CMA",
     desc: "Professional exams for commerce students.",
     logo: "/assets/img/ca.png",
-    link: "#",
+    link: "./CACSCMA",
+    aos: "fade-up",
   },
   {
     title: "CBSE",
     desc: "Mock tests from class 6th to 12th.",
     logo: "/assets/img/cbse.png",
     link: "#",
+    aos: "flip-up",
   },
   {
     title: "Competitive Exams",
     desc: "UPSC, SSC, Railways & more.",
     logo: "/assets/img/competitive.jpg",
     link: "#",
+    aos: "zoom-out",
   },
   {
     title: "CUET",
     desc: "UG entrance test practice series.",
     logo: "/assets/img/cuet.png",
     link: "#",
+    aos: "slide-left",
   },
   {
     title: "Olympiad",
     desc: "Practice for SOF and other olympiads.",
     logo: "/assets/img/olympaid.jpg",
     link: "#",
+    aos: "fade-down",
   },
   {
     title: "NEET",
     desc: "Medical entrance mock tests.",
     logo: "/assets/img/neet.jpg",
     link: "#",
+    aos: "flip-right",
   },
 ];
 
 export default function MockTests() {
+  useEffect(() => {
+    AOS.init({
+      duration: 600,
+      easing: "ease-in-out",
+      once: false,
+    });
+  }, []);
+
   return (
     <>
       <Header />
       <main className="py-10 bg-gradient-to-br from-white to-gray-50 min-h-screen">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-purple-700 underline  decoration-4 animate-pulse mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-purple-700 underline decoration-4 animate-pulse mb-10">
             🧠 Best Mock Tests
           </h2>
 
@@ -57,6 +74,8 @@ export default function MockTests() {
               <div
                 key={i}
                 className="relative group [perspective:1000px] h-72 w-full"
+                data-aos={test.aos}
+                data-aos-delay={i * 100}
               >
                 <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
                   {/* Front */}
