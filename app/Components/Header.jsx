@@ -49,7 +49,7 @@ export default function Header() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-gray-50 px-4 py-3 shadow-inner rounded-b">
-          <div className="flex flex-col items-center space-y-2">
+          <div className="flex flex-col items-center space-y-4">
             <NavItems />
           </div>
         </div>
@@ -62,7 +62,7 @@ function NavItems() {
   return (
     <>
       <NavItem
-        href="https://nlbdkc.noeticindia.com/digitalLibrary"
+        href="./home"
         label="Digital Library"
         icon={<FaBookOpen />}
         color="text-teal-600"
@@ -98,8 +98,8 @@ function NavItems() {
 function NavItem({ href, label, icon, color }) {
   return (
     <Link href={href} target="_blank" rel="noopener noreferrer" className="block w-full">
-      <span
-        className={`flex justify-center items-center gap-2 font-semibold text-sm hover:underline transition ${color}`}
+         <span
+        className={`flex flex-row items-center gap-2 font-semibold text-sm hover:underline transition ${color} whitespace-nowrap`}
       >
         {icon}
         {label}
