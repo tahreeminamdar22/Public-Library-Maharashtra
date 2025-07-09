@@ -4,6 +4,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import Modal from "../Components/Modal"; 
+import Month from "../Components/Month"; 
 
 export default function Page() {
   useEffect(() => {
@@ -11,7 +13,7 @@ export default function Page() {
   }, []);
 
   const [filter, setFilter] = useState("Daily");
-
+   const [showModal, setShowModal] = useState(false);
  const quizData = [
   { date: "Jul 7, 2025",  type: "Daily" },
   { date: "Jul 6, 2025", type: "Daily" },
@@ -72,13 +74,14 @@ export default function Page() {
             >
               <h2 className="text-xl font-semibold text-gray-800 mb-1">{quiz.date}</h2>
               
-              <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-full">
+              <button onClick={() => setShowModal(true)} className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-full">
                 Take Quiz 🧠
               </button>
             </div>
           ))}
         </div>
       </main>
+      {showModal && <Modal onClose={() => setShowModal(false)} />}
       <Footer />
     </>
   );

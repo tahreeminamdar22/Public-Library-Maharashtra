@@ -50,7 +50,7 @@ export default function Page() {
           🗓️ Monthly Current Affairs
         </h1>
         <p className="text-gray-600 mb-8 text-sm sm:text-base">
-          Click a month to view daily quiz topics from that month.
+          Click a month to view daily quiz topics from the respective month.
         </p>
 
         {/* Month Filter */}

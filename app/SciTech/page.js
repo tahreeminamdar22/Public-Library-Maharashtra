@@ -1,0 +1,131 @@
+"use client";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
+import "../globals.css";
+
+import {
+  faChalkboardTeacher,
+  faNewspaper,
+  faFlask,
+  faVideo,
+  faBookOpen,
+  faFileAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+export default function Page() {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      duration: 700,
+      easing: "ease-in-out",
+      offset: 120,
+    });
+  }, []);
+
+  const allResources = [
+    {
+      type: "Online Courses (STEM)",
+      title: "edX STEM Courses",
+      icon: faChalkboardTeacher,
+      color: "text-sky-600",
+      aos: "fade-up",
+      link: "https://www.edx.org/learn/stem",
+    },
+    {
+      type: "Technology News",
+      title: "TechCrunch",
+      icon: faNewspaper,
+      color: "text-rose-500",
+      aos: "fade-up",
+      link: "https://techcrunch.com/",
+    },
+    {
+      type: "Innovation & Discoveries",
+      title: "MIT Technology Review",
+      icon: faFlask,
+      color: "text-yellow-500",
+      aos: "fade-up",
+      link: "https://www.technologyreview.com/",
+    },
+    {
+      type: "Science Documentaries",
+      title: "National Geographic Science",
+      icon: faVideo,
+      color: "text-red-500",
+      aos: "fade-up",
+      link: "https://www.nationalgeographic.com/science",
+    },
+    {
+      type: "Science Magazines",
+      title: "Scientific American",
+      icon: faBookOpen,
+      color: "text-orange-400",
+      aos: "fade-up",
+      link: "https://www.scientificamerican.com/",
+    },
+    {
+      type: "Research Papers & Journals",
+      title: "Google Scholar",
+      icon: faFileAlt,
+      color: "text-indigo-600",
+      aos: "fade-up",
+      link: "https://scholar.google.com/",
+    },
+  ];
+
+  return (
+    <>
+      <Header />
+      <main className="min-h-screen bg-white text-gray-800">
+        <section className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="text-center text-4xl font-extrabold text-emerald-600 mb-16 drop-shadow-md">
+              📚 Science & Technology
+            </h1>
+
+            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+              {allResources.map((res, i) => (
+                <div
+                  key={i}
+                  className="relative p-6 rounded-3xl border border-white/30 bg-white/20 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center"
+                  data-aos={res.aos}
+                  data-aos-delay={i * 100}
+                >
+                  {/* Tag */}
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white/50 px-4 py-1 text-xs font-semibold text-gray-700 rounded-full shadow backdrop-blur-sm border border-white/30">
+                    {res.type}
+                  </div>
+
+                  {/* Icon */}
+                  <div className={`text-4xl mt-6 mb-4 ${res.color}`}>
+                    <FontAwesomeIcon icon={res.icon} />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-md font-semibold text-gray-800 mb-4 leading-snug">
+                    {res.title}
+                  </h3>
+
+                  {/* Link */}
+                  <a
+                    href={res.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-emerald-700 font-medium hover:underline mt-auto"
+                  >
+                    View Details →
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}

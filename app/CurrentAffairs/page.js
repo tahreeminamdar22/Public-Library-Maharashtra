@@ -99,7 +99,7 @@ export default function Page() {
         <div
           key={index}
           className="bg-white rounded-xl shadow-md p-6 transform transition-transform duration-300 hover:scale-105"
-          data-aos="fade-up"
+          data-aos="flip-left"
           data-aos-delay={index * 100}
         >
           <h3 className="text-xl font-semibold text-gray-800 mb-1">{quiz.date}</h3>

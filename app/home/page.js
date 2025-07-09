@@ -40,7 +40,7 @@ export default function page() {
       color: "text-purple-600",
       desc:
         "Career Awareness & Future Readiness | Digital Literacy & Tech Skills | Language ... & more",
-      link: "https://nlbdkc.noeticindia.com/digitalLibrary/showCategory/129",
+      link: "./HighSchool",
        aos: "fade-in",
     },
      {
@@ -49,7 +49,7 @@ export default function page() {
       color: "text-black-600",
       desc:
         "Skills Training Videos & more",
-      link: "https://nlbdkc.noeticindia.com/digitalLibrary/showCategory/129",
+      link: "./JobTraining",
        aos: "flip-up",
     },
      {
@@ -58,7 +58,7 @@ export default function page() {
       color: "text-pink-600",
       desc:
         "Discoveries | News | Docs | Research",
-      link: "https://nlbdkc.noeticindia.com/digitalLibrary/showCategory/129",
+      link: "./SciTech",
        aos: "flip-down",
     },
     
@@ -68,9 +68,12 @@ export default function page() {
     <Header />
      <main className="py-10">
       <div className="max-w-7xl mx-auto px-4">
-        <h1 className="text-center text-3xl sm:text-4xl font-extrabold text-blue-700 mb-8">
+        <h1 className="text-center text-3xl sm:text-4xl font-extrabold text-blue-700 mb-6">
           📚 Public Library Maharashtra Digital Knowledge Centre (PLMDKC)
         </h1>
+        <h2 className="text-center text-md sm:text-lg font-bold text-blue-500 mb-4">सार्वजनिक 
+          पुस्तकालय महाराष्ट्र, अंकीय ज्ञान केंद्र</h2>
+        <p className="text-center text-md sm:text-lg font-bold text-blue-500 mb-4">1 to 100, We’ve Got a Book for Every Curious Kids, Dreamy Teens, Busy Adults & Wise Souls!</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {resources.map((item, index) => (

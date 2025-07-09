@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
 body {
-      font-family: 'Segoe UI', sans-serif;
+      
+  font-family: 'Segoe UI', sans-serif;
+       
+
       
     }
 
@@ -122,3 +125,16 @@ body {
   background-color: #cbd5e0;
   border-radius: 6px;
 }
+.card-custom {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 1rem;
+    }
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
