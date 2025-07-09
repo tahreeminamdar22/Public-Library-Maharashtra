@@ -13,13 +13,14 @@ import {
   faVideo,
   faBookOpen,
   faFileAlt,
+  faL,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Page() {
   useEffect(() => {
     AOS.init({
-      once: true,
+      once: false,
       duration: 700,
       easing: "ease-in-out",
       offset: 120,
@@ -32,7 +33,7 @@ export default function Page() {
       title: "edX STEM Courses",
       icon: faChalkboardTeacher,
       color: "text-sky-600",
-      aos: "fade-up",
+      aos: "slide-right",
       link: "https://www.edx.org/learn/stem",
     },
     {
@@ -40,7 +41,7 @@ export default function Page() {
       title: "TechCrunch",
       icon: faNewspaper,
       color: "text-rose-500",
-      aos: "fade-up",
+      aos: "slide-down",
       link: "https://techcrunch.com/",
     },
     {
@@ -48,7 +49,7 @@ export default function Page() {
       title: "MIT Technology Review",
       icon: faFlask,
       color: "text-yellow-500",
-      aos: "fade-up",
+      aos: "slide-left",
       link: "https://www.technologyreview.com/",
     },
     {
@@ -56,7 +57,7 @@ export default function Page() {
       title: "National Geographic Science",
       icon: faVideo,
       color: "text-red-500",
-      aos: "fade-up",
+      aos: "slide-right",
       link: "https://www.nationalgeographic.com/science",
     },
     {
@@ -64,7 +65,7 @@ export default function Page() {
       title: "Scientific American",
       icon: faBookOpen,
       color: "text-orange-400",
-      aos: "fade-up",
+      aos: "slide-up",
       link: "https://www.scientificamerican.com/",
     },
     {
@@ -72,7 +73,7 @@ export default function Page() {
       title: "Google Scholar",
       icon: faFileAlt,
       color: "text-indigo-600",
-      aos: "fade-up",
+      aos: "slide-left",
       link: "https://scholar.google.com/",
     },
   ];
@@ -91,22 +92,22 @@ export default function Page() {
               {allResources.map((res, i) => (
                 <div
                   key={i}
-                  className="relative p-6 rounded-3xl border border-white/30 bg-white/20 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center"
+                  className="relative p-6 rounded-4xl border border-white/30 bg-white/20 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center"
                   data-aos={res.aos}
                   data-aos-delay={i * 100}
                 >
                   {/* Tag */}
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white/50 px-4 py-1 text-xs font-semibold text-gray-700 rounded-full shadow backdrop-blur-sm border border-white/30">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white/50 px-4 py-1 text-sm font-semibold text-gray-700 rounded-full shadow backdrop-blur-sm border border-white/30">
                     {res.type}
                   </div>
 
                   {/* Icon */}
-                  <div className={`text-4xl mt-6 mb-4 ${res.color}`}>
+                  <div className={`text-5xl mt-6 mb-4 ${res.color}`}>
                     <FontAwesomeIcon icon={res.icon} />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-md font-semibold text-gray-800 mb-4 leading-snug">
+                  <h3 className="text-md font-bold text-gray-800 mb-4 leading-snug">
                     {res.title}
                   </h3>
 
@@ -115,9 +116,9 @@ export default function Page() {
                     href={res.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-emerald-700 font-medium hover:underline mt-auto"
+                    className="text-sm p-2 border-2 rounded-3xl border-cyan-600 bg-cyan-500 text-cyan-800 font-medium hover:font-extrabold mt-auto"
                   >
-                    View Details →
+                    View Details 
                   </a>
                 </div>
               ))}
