@@ -116,7 +116,7 @@ export default function Page() {
                     href={res.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm p-2 border-2 rounded-3xl border-cyan-600 bg-cyan-500 text-cyan-800 font-medium hover:font-extrabold mt-auto"
+                    className="text-sm  py-2 px-15 border-2 rounded-2xl border-cyan-600 bg-cyan-500 text-cyan-800 font-medium hover:font-extrabold mt-auto"
                   >
                     View Details 
                   </a>
