@@ -116,7 +116,11 @@ export default function Page() {
                     href={res.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm  py-2 px-15 border-2 rounded-2xl border-cyan-600 bg-cyan-500 text-cyan-800 font-medium hover:font-extrabold mt-auto"
+                    className="text-sm py-2 px-6 rounded-2xl font-semibold mt-auto
+  bg-white/20 backdrop-blur-md border border-white/30 text-black
+  hover:bg-white/30 hover:backdrop-blur-xl hover:text-black hover:font-bold 
+  transition duration-300 ease-in-out shadow-md"
+
                   >
                     View Details 
                   </a>
