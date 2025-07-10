@@ -97,7 +97,7 @@ export default function Page() {
                   data-aos-delay={i * 100}
                 >
                   {/* Tag */}
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white/50 px-4 py-1 text-sm font-semibold text-gray-700 rounded-full shadow backdrop-blur-sm border border-white/30">
+                  <div className="absolute -top-3 left-1/2 w-50 transform -translate-x-1/2 bg-white/50 px-5 py-2 text-sm font-bold text-blue-400 rounded-full shadow backdrop-blur-sm border border-blue/30">
                     {res.type}
                   </div>
 
