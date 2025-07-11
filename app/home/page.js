@@ -23,7 +23,7 @@ export default function page() {
       icon: "fas fa-pencil-alt",
       color: "text-red-600",
       desc: "NEET | JEE | UPSC | SSC | Banking | Railways",
-      link: "./Test",
+      link: "./TestSeries",
        aos: "Zoom-in",
     },
     {
