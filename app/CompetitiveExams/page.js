@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Header, Footer } from "@/components";
 
+
 export default function Page() {
   useEffect(() => {
     AOS.init({ once: true, duration: 100, easing: "ease-in-out" });
