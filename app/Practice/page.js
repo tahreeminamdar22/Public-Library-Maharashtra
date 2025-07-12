@@ -2,10 +2,12 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Header from "../Components/Header";
+
+import { Header, Footer } from "@/components";
 
 export default function Page() {
   const [selectedOption, setSelectedOption] = useState("all");
+  const [gameSound, setGameSound] = useState(true);
 
 
   useEffect(() => {

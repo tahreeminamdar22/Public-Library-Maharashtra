@@ -10,13 +10,14 @@ import {
   FaChevronRight,
   FaThLarge,
 } from "react-icons/fa";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-import "react-pdf/dist/esm/Page/TextLayer.css";
+// import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+// import "react-pdf/dist/esm/Page/TextLayer.css";
+//
 
 import workerSrc from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 
-export default function PdfViewer({ fileUrl, className = "" }) {
+export default function PDFViewer({ fileUrl, className = "" }) {
   const [fileExists, setFileExists] = useState(false);
   const [checked, setChecked] = useState(false);
 
