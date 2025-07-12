@@ -3,9 +3,7 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
-import Modal from "../Components/Modal";
+import { Header, Footer, Modal } from "@/components";
 
 export default function page() {
   const [showModal, setShowModal] = useState(false);
