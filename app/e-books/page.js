@@ -2,10 +2,8 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
-import FilterSidebar from "../Components/FilterSidebar";
-import BookIframe from "../Components/BookIframe";
+import { Header, Footer, FilterSidebar } from "@/components";
+import Link from "next/link";
 export default function Page() {
   useEffect(() => {
     AOS.init({
@@ -17,10 +15,19 @@ export default function Page() {
   }, []);
 
   const filters = [
-    { title: "Year of Publication", options: ["2025", "2024", "2023", "2010", "2007"] },
-    { title: "Mediums / Languages", options: ["Marathi", "Hindi", "English", "Urdu"] },
+    {
+      title: "Year of Publication",
+      options: ["2025", "2024", "2023", "2010", "2007"],
+    },
+    {
+      title: "Mediums / Languages",
+      options: ["Marathi", "Hindi", "English", "Urdu"],
+    },
     { title: "Subjects", options: ["Math", "Science", "Civics", "Languages"] },
-    { title: "Publisher", options: ["Balbharati", "NLB", "NCERT", "NIOS", "Other Publishers"] },
+    {
+      title: "Publisher",
+      options: ["Balbharati", "NLB", "NCERT", "NIOS", "Other Publishers"],
+    },
     { title: "Authors", options: ["Author A", "Author B", "Author C"] },
     { title: "ISSN / ISBN", options: ["123-4567890123", "987-6543210987"] },
     { title: "Content Types", options: ["open access", "premium"] },
@@ -31,65 +38,81 @@ export default function Page() {
     {
       title: "English Balbharti",
       image: "/assets/img/englishbalbharti.jpg",
-      file: "/books/English-Balbharti.pdf",
+      file: "/English-Balbharti.pdf",
       author: "Dr Sunil Magar",
       category: "Ebooks",
       edition: "1st Edition",
       publisher: "Vivek Uttam Gosavi",
       desc: "Textbook for students of English medium",
       aos: "fade-down",
+      type: "ebook",
     },
     {
       title: "Biology",
       image: "/assets/img/biology.jpg",
-      file: "/books/biology.pdf",
+      file: "/biology.pdf",
       author: "Dr. Chandrashekhar V. Murumkar",
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Solar cells dye-sensitized devices",
       aos: "zoom-out",
+      type: "ebook",
+    },
+    {
+      title: "i-Book",
+      image: "/assets/img/biology.jpg",
+      file: "/biology.pdf",
+      author: "Dr. Chandrashekhar V. Murumkar",
+      category: "Ebooks",
+      edition: "1st Edition",
+      desc: "Solar cells dye-sensitized devices",
+      aos: "zoom-out",
+      type: "ibook",
     },
     {
       title: "Chemistry",
       image: "/assets/img/chemi.jpg",
-      file: "/books/chemistry.pdf",
+      file: "/chemistry.pdf",
       author: "Shri. Rajiv Arun Patole",
       category: "Ebooks",
       edition: "2nd Edition",
       desc: "Power Quality Monitoring, Analysis & Enhancement",
       aos: "slide-up",
+      type: "ebook",
     },
     {
       title: "Defence Studies",
       image: "/assets/img/defence.jpg",
-      file: "/books/defence_studies.pdf",
+      file: "/defence_studies.pdf",
       author: "Shri. Nandkumar Borse",
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Advances In Applied Biotechnology",
       aos: "flip-up",
+      type: "ebook",
     },
     {
       title: "French",
       image: "/assets/img/french.jpg",
-      file: "/books/french.pdf",
+      file: "/french.pdf",
       author: "Smt. Anjali Lokur",
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Career Awareness & Future Readiness",
       aos: "fade-down",
+      type: "ebook",
     },
     {
       title: "Chemistry",
       image: "/assets/img/chemi.jpg",
-      file: "/books/chemistry.pdf",
+      file: "/chemistry.pdf",
       author: "Shri. Rajiv Arun Patole",
       category: "Ebooks",
       edition: "1st Edition",
       desc: "Life forms from genes to ecosystems",
       aos: "flip-right",
+      type: "ebook",
     },
-   
   ];
 
   const [filteredResources, setFilteredResources] = useState(allResources);
@@ -134,21 +157,29 @@ export default function Page() {
                   </div>
 
                   <div className="h-[30%] px-4 py-3 flex flex-col justify-between">
-                    <h3 className="text-base font-bold text-gray-900 truncate">{item.title}</h3>
-                    <p className="text-sm text-gray-600 truncate">👤 {item.author}</p>
-                    <p className="text-sm text-gray-600 truncate">📘 {item.category} • 📝 {item.edition}</p>
-                    <p className="text-sm text-gray-600 line-clamp-2">{item.desc}</p>
+                    <h3 className="text-base font-bold text-gray-900 truncate">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 truncate">
+                      👤 {item.author}
+                    </p>
+                    <p className="text-sm text-gray-600 truncate">
+                      📘 {item.category} • 📝 {item.edition}
+                    </p>
+                    <p className="text-sm text-gray-600 line-clamp-2">
+                      {item.desc}
+                    </p>
                   </div>
 
                   <div className="h-[10%] w-full px-4 pb-4">
-                    <a
-                     href={`${item.file}#toolbar=0&navpanes=0&scrollbar=0`}
+                    <Link
+                      href={item.type=="ibook"?`/read-i-book${item.file}`:`/read-book${item.file}`}
                       target="_self"
                       rel="noopener noreferrer"
                       className="block w-full text-center text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-800 border border-indigo-800 rounded-md py-2 transition-all duration-300 hover:shadow-md hover:scale-[1.01]"
                     >
                       View →
-                    </a>
+                    </Link>
                   </div>
                 </div>
               ))}

@@ -6,7 +6,7 @@ import Header from "../Components/Header";
 
 export default function Page() {
   const [selectedOption, setSelectedOption] = useState("all");
-  const [gameSound, setGameSound] = useState(true);
+
 
   useEffect(() => {
     AOS.init({ once: true, duration: 100, easing: "ease-in-out" });

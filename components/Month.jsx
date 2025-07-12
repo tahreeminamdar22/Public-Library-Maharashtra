@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Modal from "../Components/Modal";
+import { Modal } from "@/components";
 
 export default function Page() {
   const [selectedMonth, setSelectedMonth] = useState("Jun");
@@ -16,12 +16,28 @@ export default function Page() {
     // ==== APRIL ====
     { date: "Apr 01, 2025", topics: "World Health Day Preview", type: "Daily" },
     { date: "Apr 02, 2025", topics: "NASA Launch Updates", type: "Daily" },
-    { date: "Apr 03, 2025", topics: "IPL 2025 Opening Ceremony", type: "Daily" },
+    {
+      date: "Apr 03, 2025",
+      topics: "IPL 2025 Opening Ceremony",
+      type: "Daily",
+    },
 
     // ==== MAY ====
-    { date: "May 01, 2025", topics: "Labour Day India & International News", type: "Daily" },
-    { date: "May 02, 2025", topics: "Elections 2025: Phase 1 Begins", type: "Daily" },
-    { date: "May 03, 2025", topics: "UNESCO Heritage Additions", type: "Daily" },
+    {
+      date: "May 01, 2025",
+      topics: "Labour Day India & International News",
+      type: "Daily",
+    },
+    {
+      date: "May 02, 2025",
+      topics: "Elections 2025: Phase 1 Begins",
+      type: "Daily",
+    },
+    {
+      date: "May 03, 2025",
+      topics: "UNESCO Heritage Additions",
+      type: "Daily",
+    },
 
     // ==== JUNE ====
     { date: "Jun 01, 2025", topics: "ISRO Moon Mission", type: "Daily" },
@@ -32,7 +48,11 @@ export default function Page() {
     { date: "Jun 08, 2025", topics: "Lok Sabha Polls Recap", type: "Daily" },
     { date: "Jun 09, 2025", topics: "UN Climate Report", type: "Daily" },
     { date: "Jun 10, 2025", topics: "Cannes Film Fest", type: "Daily" },
-    { date: "Jun 11–30, 2025", topics: "Cannes Film Fest Ongoing", type: "Daily" },
+    {
+      date: "Jun 11–30, 2025",
+      topics: "Cannes Film Fest Ongoing",
+      type: "Daily",
+    },
 
     // ==== JULY ====
     { date: "Jul 02, 2025", topics: "Wimbledon Finals", type: "Daily" },
@@ -94,7 +114,9 @@ export default function Page() {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 mt-10 text-sm">No data found for {selectedMonth} 2025.</p>
+          <p className="text-gray-500 mt-10 text-sm">
+            No data found for {selectedMonth} 2025.
+          </p>
         )}
       </main>
 
