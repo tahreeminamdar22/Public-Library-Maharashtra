@@ -16,7 +16,7 @@ import {
 import workerSrc from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 
-export default function PdfViewer({ fileUrl, className = "" }) {
+export default function PDFViewer({ fileUrl, className = "" }) {
   const [fileExists, setFileExists] = useState(false);
   const [checked, setChecked] = useState(false);
 
