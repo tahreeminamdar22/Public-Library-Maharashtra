@@ -2,10 +2,7 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
-import Modal from "../Components/Modal"; 
-import Month from "../Components/Month"; 
+import { Header, Footer, Modal, Month } from "@/components";
 
 export default function Page() {
   useEffect(() => {
@@ -13,29 +10,27 @@ export default function Page() {
   }, []);
 
   const [filter, setFilter] = useState("Daily");
-   const [showModal, setShowModal] = useState(false);
- const quizData = [
-  { date: "Jul 7, 2025",  type: "Daily" },
-  { date: "Jul 6, 2025", type: "Daily" },
-  { date: "Jul 5, 2025", type: "Daily" },
-   { date: "Jul 4, 2025",  type: "Daily" },
-  { date: "Jul 3, 2025", type: "Daily" },
-  { date: "Jul 2, 2025", type: "Daily" },
+  const [showModal, setShowModal] = useState(false);
+  const quizData = [
+    { date: "Jul 7, 2025", type: "Daily" },
+    { date: "Jul 6, 2025", type: "Daily" },
+    { date: "Jul 5, 2025", type: "Daily" },
+    { date: "Jul 4, 2025", type: "Daily" },
+    { date: "Jul 3, 2025", type: "Daily" },
+    { date: "Jul 2, 2025", type: "Daily" },
 
+    { date: "Jun 2025", type: "Monthly" },
+    { date: "May 2025", type: "Monthly" },
+    { date: "Apr 2025", type: "Monthly" },
+    { date: "Mar 2025", type: "Monthly" },
+    { date: "Feb 2025", type: "Monthly" },
+    { date: "Jan 2025", type: "Monthly" },
 
-  { date: "Jun 2025", type: "Monthly" },
-  { date: "May 2025",  type: "Monthly" },
-  { date: "Apr 2025", type: "Monthly" },
-  { date: "Mar 2025", type: "Monthly" },
-  { date: "Feb 2025", type: "Monthly" },
-  { date: "Jan 2025", type: "Monthly" },
-
-  { date: "2025", type: "Yearly" },
-  { date: "2024", type: "Yearly" },
-  { date: "2023", type: "Yearly" },
-  { date: "2022", type: "Yearly" }
-];
-
+    { date: "2025", type: "Yearly" },
+    { date: "2024", type: "Yearly" },
+    { date: "2023", type: "Yearly" },
+    { date: "2022", type: "Yearly" },
+  ];
 
   const filteredData = quizData.filter((q) => q.type === filter);
 
@@ -43,8 +38,12 @@ export default function Page() {
     <>
       <Header />
       <main className="min-h-screen flex flex-col items-center justify-center px-4 py-10 bg-gradient-to-b from-blue-50 to-white text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">Best Mock Tests for CA Foundations</h1>
-        <p className="text-lg text-gray-600 mb-8">Get Access to Free CA Mock Tests</p>
+        <h1 className="text-4xl font-bold text-gray-800 mb-2">
+          Best Mock Tests for CA Foundations
+        </h1>
+        <p className="text-lg text-gray-600 mb-8">
+          Get Access to Free CA Mock Tests
+        </p>
 
         {/* 🔘 Filter Tabs */}
         <div className="flex space-x-4 mb-8">
@@ -72,9 +71,14 @@ export default function Page() {
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              <h2 className="text-xl font-semibold text-gray-800 mb-1">{quiz.date}</h2>
-              
-              <button onClick={() => setShowModal(true)} className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-full">
+              <h2 className="text-xl font-semibold text-gray-800 mb-1">
+                {quiz.date}
+              </h2>
+
+              <button
+                onClick={() => setShowModal(true)}
+                className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-full"
+              >
                 Take Quiz 🧠
               </button>
             </div>
@@ -86,4 +90,3 @@ export default function Page() {
     </>
   );
 }
-
