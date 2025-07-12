@@ -6,6 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function page() {
+  const [selectedOption, setSelectedOption] = useState("all");
   return (
     <>
       <Header />
