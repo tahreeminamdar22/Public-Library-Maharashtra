@@ -1,7 +1,20 @@
 "use client";
 import React from "react";
+import Link from 'next/link';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGamepad,
+  faChalkboardTeacher,
+  faFileAlt,
+  faBookOpen
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Modal({ onClose }) {
+  const modes = [{label: "play", link: "./Play",icon: faGamepad }, 
+    {label: "practice", link: "./Practice",  icon: faChalkboardTeacher }, 
+    {label: "test", link: "./Test",  icon: faFileAlt },
+    {label: "study", link: "./Study",  icon: faBookOpen },
+  ]
   return (
     <>
       {/* 🔲 Black overlay */}
@@ -9,7 +22,7 @@ export default function Modal({ onClose }) {
 
       {/* ⬜ White Modal */}
       <div className="fixed inset-0 flex items-center justify-center z-50">
-        <div className="relative bg-gray-200 text-black rounded-lg shadow-2xl px-8 py-10 w-full max-w-md mx-auto border border-gray-200">
+        <div className="relative bg-white bg-opacity text-black rounded-lg shadow-2xl px-8 py-10 w-full max-w-md mx-auto border border-gray-200">
 
           {/* ❌ Close Button */}
           <button
@@ -24,13 +37,17 @@ export default function Modal({ onClose }) {
 
           {/* 🎮 Action Buttons */}
           <div className="flex flex-col gap-4">
-            {["Play", "Practice", "Test", "Study"].map((label, idx) => (
-              <button
-                key={idx}
-                className="w-full border border-black text-black py-2 rounded-md hover:text-red-400  transition duration-300"
-              >
-                {label}
-              </button>
+            {modes.map(({label,link,icon}, idx) => (
+              <Link  key={idx} href={link} target="_blank" rel="noopener noreferrer" className="block w-full"><button
+               
+                className="w-full border font-bold border-black text-black py-2 rounded-md hover:text-red-400 hover:bg-black  transition duration-300"
+              >     
+                 <span className="capitalize flex items-center justify-center gap-2">
+  {label}
+  <FontAwesomeIcon icon={icon} className="text-lg" />
+</span>
+
+              </button></Link>
             ))}
           </div>
         </div>

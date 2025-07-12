@@ -2,21 +2,17 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Header, Footer, Modal, Month } from "@/components";
-import Link from "next/link";
+
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
+import Modal from "../Components/Modal";
 
 export default function Page() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    AOS.init({ once: true, duration: 300, easing: "ease-in-out" });
+    AOS.init({ once: true, duration: 100, easing: "ease-in-out" });
   }, []);
-
-  const categories = [
-    { type: "Daily", path: "/Daily" },
-    { type: "Weekly", path: "/Weekly" },
-    { type: "Monthly", path: "/Monthly" },
-  ];
 
   const daily = [
     {
@@ -103,30 +99,12 @@ export default function Page() {
       <Header />
       <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white px-4 py-10 text-center">
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">
-          Current Affairs
-        </h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">daily Quiz</h1>
         <p className="text-base sm:text-lg text-gray-600 mb-6">
-          Stay updated with the latest news and events
+          Stay updated with the latest news and events for this week
         </p>
 
-        {/* Navigation Buttons */}
-        <div className="flex space-x-4 justify-center mb-10">
-          {categories.map((cat, index) => (
-            <Link
-              key={index}
-              href={cat.path}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-              className="px-6 py-2 rounded-full text-lg font-semibold transition-all duration-200 shadow-sm bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 hover:scale-105"
-            >
-              {cat.type}
-            </Link>
-          ))}
-        </div>
-
-        {/* Daily Content Shown by Default */}
-        <h2 className="text-2xl font-bold text-indigo-600 mb-6">Daily Quiz</h2>
+        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto w-full">
           {daily.map((quiz, index) => (
             <div
@@ -153,6 +131,7 @@ export default function Page() {
 
       {/* Modal */}
       {showModal && <Modal onClose={() => setShowModal(false)} />}
+
       <Footer />
     </>
   );

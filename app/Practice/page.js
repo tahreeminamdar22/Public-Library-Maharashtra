@@ -1,31 +1,39 @@
 "use client";
-
-import { Footer, Header } from "@/components";
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../Components/Header";
 
-export default function page() {
+export default function Page() {
+  const [selectedOption, setSelectedOption] = useState("all");
+  const [gameSound, setGameSound] = useState(true);
+
+  useEffect(() => {
+    AOS.init({ once: true, duration: 100, easing: "ease-in-out" });
+  }, []);
+
   return (
     <>
       <Header />
+
       {/* Overlay */}
       <div className="fixed inset-0 bg-white bg-opacity-80 z-40" />
 
       {/* Modal */}
       <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
         <div className="relative w-full max-w-md mx-auto">
+          
           {/* Floating Heading */}
           <div className="absolute -top-16 w-full text-center">
-            <h2 className="text-2xl font-bold text-black">
-              Current Affairs MCQs
-            </h2>
+            <h2 className="text-2xl font-bold text-black">Current Affairs MCQs</h2>
             <p className="text-sm text-black-400 mt-1">15 Questions</p>
           </div>
 
           {/* Modal Box */}
           <div className="bg-white text-black rounded-xl shadow-2xl px-6 py-8 w-full border border-gray-200 space-y-5">
+            
+            
+
             {/* Language Selector */}
             <div>
               <select
@@ -53,10 +61,7 @@ export default function page() {
                   onChange={() => setSelectedOption("all")}
                   className="accent-green-600 w-4 h-4"
                 />
-                <label
-                  htmlFor="allQuestions"
-                  className="text-sm text-gray-700 font-medium"
-                >
+                <label htmlFor="allQuestions" className="text-sm text-gray-700 font-medium">
                   ✅ Take all questions
                 </label>
               </div>
@@ -71,10 +76,7 @@ export default function page() {
                   onChange={() => setSelectedOption("limited")}
                   className="accent-green-600 w-4 h-4"
                 />
-                <label
-                  htmlFor="limitedQuestions"
-                  className="text-sm text-gray-700 font-medium"
-                >
+                <label htmlFor="limitedQuestions" className="text-sm text-gray-700 font-medium">
                   ⚪ Take limited questions
                 </label>
               </div>
