@@ -40,7 +40,7 @@ export default function Page() {
       title: "TechCrunch",
       icon: faNewspaper,
       color: "text-rose-500",
-      aos: "slide-down",
+      aos: "slide-up",
       link: "https://techcrunch.com/",
     },
     {
@@ -80,10 +80,10 @@ export default function Page() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-white text-gray-800">
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-center text-4xl font-extrabold text-emerald-600 mb-16 drop-shadow-md">
+      <main className="min-h-screen bg-white text-gray-500">
+        <section className="py-14">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="text-center text-4xl font-extrabold text-emerald-400 mb-16 drop-shadow-md">
               📚 Science & Technology
             </h1>
 
@@ -91,17 +91,17 @@ export default function Page() {
               {allResources.map((res, i) => (
                 <div
                   key={i}
-                  className="relative p-6 rounded-4xl border border-white/30 bg-white/20 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center"
+                  className="relative p-4 rounded-5xl border border-white/30 bg-white/20 backdrop-blur-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center"
                   data-aos={res.aos}
                   data-aos-delay={i * 100}
                 >
                   {/* Tag */}
-                  <div className="absolute -top-3 left-1/2 w-50 transform -translate-x-1/2 bg-white/50 px-5 py-2 text-sm font-bold text-blue-400 rounded-full shadow backdrop-blur-sm border border-blue/30">
+                  <div className="absolute -top-3 left-1/2 w-60 transform -translate-x-1/2 bg-gray/50 px-5 py-2 text-sm font-medium text-blue-400 rounded-full shadow backdrop-blur-sm border border-blue/30">
                     {res.type}
                   </div>
 
                   {/* Icon */}
-                  <div className={`text-5xl mt-6 mb-4 ${res.color}`}>
+                  <div className={`text-3xl mt-6 mb-4 ${res.color}`}>
                     <FontAwesomeIcon icon={res.icon} />
                   </div>
 

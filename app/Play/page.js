@@ -1,27 +1,69 @@
-import { Footer, Header } from "@/components";
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Header from "../Components/Header";
 
-const page = () => {
+export default function Page() {
   const [selectedOption, setSelectedOption] = useState("all");
+  const [gameSound, setGameSound] = useState(true);
+
+  useEffect(() => {
+    AOS.init({ once: true, duration: 100, easing: "ease-in-out" });
+  }, []);
 
   return (
     <>
       <Header />
 
       {/* Overlay */}
-      <div className="fixed inset-0 bg-white bg-opacity-80 z-40" />
+      <div className="fixed inset-0 bg-black bg-opacity-80 z-40" />
 
       {/* Modal */}
       <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
         <div className="relative w-full max-w-md mx-auto">
+          
           {/* Floating Heading */}
           <div className="absolute -top-16 w-full text-center">
-            <h2 className="text-2xl font-bold text-black">Current Affairs MCQs</h2>
-            <p className="text-sm text-black-400 mt-1">15 Questions</p>
+            <h2 className="text-2xl font-bold text-white">Current Affairs MCQs</h2>
+            <p className="text-sm text-gray-200 mt-1">15 Questions</p>
           </div>
 
           {/* Modal Box */}
           <div className="bg-white text-black rounded-xl shadow-2xl px-6 py-8 w-full border border-gray-200 space-y-5">
+            
+            {/* Timer + Game Sound Toggle */}
+            <div className="flex items-center justify-between">
+              <label className="font-semibold text-sm">
+                Timer:
+                <select
+                  name="selectedTime"
+                  className="ml-2 border border-gray-300 rounded px-2 py-1 text-sm"
+                >
+                  <option value="15secs">15 secs</option>
+                  <option value="30secs">30 secs</option>
+                  <option value="60secs">60 secs</option>
+                </select>
+              </label>
+
+              {/* Game Sound Toggle */}
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-700">Game Sound:</span>
+                <button
+                  onClick={() => setGameSound(!gameSound)}
+                  className={`w-10 h-5 flex items-center rounded-full p-1 transition-colors duration-300 ${
+                    gameSound ? "bg-green-500" : "bg-gray-400"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
+                      gameSound ? "translate-x-5" : "translate-x-0"
+                    }`}
+                  ></div>
+                </button>
+              </div>
+            </div>
+
             {/* Language Selector */}
             <div>
               <select
@@ -115,10 +157,6 @@ const page = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
-};
-
-export default page;
+}

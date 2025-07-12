@@ -1,8 +1,16 @@
-import { Footer, Header } from "@/components";
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Header from "../Components/Header";
 
-const page = () => {
+export default function Page() {
   const [selectedOption, setSelectedOption] = useState("all");
+
+
+  useEffect(() => {
+    AOS.init({ once: true, duration: 100, easing: "ease-in-out" });
+  }, []);
 
   return (
     <>
@@ -14,6 +22,7 @@ const page = () => {
       {/* Modal */}
       <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
         <div className="relative w-full max-w-md mx-auto">
+          
           {/* Floating Heading */}
           <div className="absolute -top-16 w-full text-center">
             <h2 className="text-2xl font-bold text-black">Current Affairs MCQs</h2>
@@ -22,6 +31,9 @@ const page = () => {
 
           {/* Modal Box */}
           <div className="bg-white text-black rounded-xl shadow-2xl px-6 py-8 w-full border border-gray-200 space-y-5">
+            
+            
+
             {/* Language Selector */}
             <div>
               <select
@@ -115,10 +127,6 @@ const page = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
-};
-
-export default page;
+}
